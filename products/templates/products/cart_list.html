@@ -1,0 +1,8 @@
+hello,this is cart list page
+
+ {% for item in cart %}
+ {{ item.user }}<br/>
+ {{ item.status }}</br>
+ {{ item.added_date }}</br>
+ {{ item.ttl_amount }}</br>
+  {% endfor %}

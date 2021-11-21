@@ -1,0 +1,132 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{% static 'products/static/css/custom.css'%}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   </head>
+   <body>
+      <nav class="navbar navbar-expand-lg navbar-dark  bg-darker">
+         <div class="container">
+            <a class="navbar-brand" href="/">Nomiya</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link text-white" href="/products/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link text-white" href="product_list">Product List</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link text-white" href="/admin/">Admin</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link text-white" href="/cart"><i class="fa fa-shopping-cart"></i> Cart (<span class="cart-list">1</span>)</a>
+                  </li>
+                  {% comment %}
+                  <form class="navbar-form navbar-left" method="POST" action="{% url 'search'%}" role="search">
+                     {% csrf_token %}
+                     <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search ..." name="inputinsearchbar">
+                        <button type="submit" class="btn btn-default">Search</button>
+                     </div>
+                  </form>
+                  {% endcomment %}
+                  <li class="nav-item">
+                     <a class="nav-link text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="fa fa-user "></i> Login/SignUp
+                     </a>
+            </div>
+            </li>
+            </ul>
+         </div>
+         </div>
+      </nav>
+      </nav> 
+      <section class="bg-darker bg-size-cover bg-position-center py-5 py-lg-10" style="background-image: url(/media/images/hero-bg.jpg);">
+         <div class="container pb-5">
+            <div class="row justify-content-center pb-5">
+               <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 text-center">
+                  <h5 class="text-light fw-light">#1 Food Delivery Service since 2010</h5>
+                  <div class="h1 text-light mb-3 pb-4">
+                     We deliver your favorite food fresh &amp; fast in
+                     <div class="dropdown d-inline-block ms-1">
+                        <a class="dropdown-toggle newcolor" href="#" data-bs-toggle="dropdown">New York</a>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item fs-base" href="#">Los Angeles</a><a class="dropdown-item fs-base" href="#">Chicago</a><a class="dropdown-item fs-base" href="#">Houston</a><a class="dropdown-item fs-base" href="#">Philadelphia</a><a class="dropdown-item fs-base" href="#">San Diego</a><a class="dropdown-item fs-base" href="#">Miami</a></div>
+                     </div>
+                  </div>
+                  <a class="btn btn-danger" href="#cuisine" data-scroll="">What do you want to eat?</a>
+               </div>
+            </div>
+         </div>
+      </section>
+      {% block content %}
+      {% endblock %}
+      <footer class="footer bg-darker pt-5">
+         <div class="container pt-2">
+            <div class="row pb-2">
+               <div class="col-lg-2 col-sm-4 pb-2 mb-4">
+                  <div class="mt-n1"><a class="d-inline-block align-middle" href="#"><img class="d-block mb-4" src="/media/images/logo.png" width="117" alt="Cartzilla"></a></div>
+               </div>
+               <div class="col-lg-2 col-sm-4">
+                  <div class="widget widget-links widget-light pb-2 mb-4">
+                     <h4 class="widget-title text-light">Join us</h4>
+                     <ul class="widget-list">
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Careers</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Restaurants</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Become a Courier</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">About</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-2 col-sm-4">
+                  <div class="widget widget-links widget-light pb-2 mb-4">
+                     <h4 class="widget-title text-light">Let us help you</h4>
+                     <ul class="widget-list">
+                        <li class="widget-list-item"><a class="widget-list-link changecolor" href="#">Help Center</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Support</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Contacts</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-2 col-sm-4">
+                  <div class="widget widget-links widget-light pb-2 mb-4">
+                     <h4 class="widget-title text-light">Follow us</h4>
+                     <ul class="widget-list">
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Facebook</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Twitter</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Instagram</a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-lg-2 col-sm-4">
+                  <div class="widget widget-links widget-light pb-2 mb-4">
+                     <h4 class="widget-title text-light">Download App</h4>
+                     <ul class="widget-list">
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Apple Store</a></li>
+                        <li class="widget-list-item"><a class="widget-list-link" href="#">Google Play</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <hr class="hr-light mt-md-2 mb-3">
+            <div class="d-md-flex justify-content-between pt-4 pb-1">
+               <div class="pb-4 fs-xs text-light opacity-50 text-center text-md-start">© All rights reserved. Made by <a class="text-light" href="https://createx.studio/" target="_blank" rel="noopener">Createx Studio</a></div>
+               <div class="widget widget-links widget-light pb-4">
+                  <ul class="widget-list d-flex flex-wrap justify-content-center justify-content-md-start">
+                     <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Privacy Policy</a></li>
+                     <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Terms &amp; Conditions</a></li>
+                     <li class="widget-list-item ms-4"><a class="widget-list-link fs-ms" href="#">Cookies Policy</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </footer>
+   </body>
+</html>

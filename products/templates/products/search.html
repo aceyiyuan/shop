@@ -1,0 +1,20 @@
+this is search page
+
+hello
+
+ <!-- {% extends 'products/base.html' %}
+{% block content %}
+	{% if inputinsearchbar %}
+	{% for product in products %}
+	
+		<a href ="{% url 'products:products/product_detail' id=product.id %}">{{product.name}}</a>-{{product.description}}<br/> 
+	{% empty %}   
+		<p>hmm, embarrasing, we don't have such a product ....</p>
+	{% endfor %}
+	{% else %}
+		<h1>Are you sure you input any search words?</h1>
+	{% endif %}
+{% endblock %} 
+
+
+ -->
