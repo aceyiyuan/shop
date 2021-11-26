@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
+
 class Category(models.Model):
 	name=models.CharField(max_length=100)
 
@@ -43,7 +44,7 @@ class Portion(models.Model):
 # Product
 class Product(models.Model):
 	
-	name = models.CharField(max_length=50, verbose_name="title")
+	name = models.CharField(max_length=50, verbose_name="name")
 	category=models.ForeignKey(Category, related_name='products',verbose_name="Category", on_delete=models.CASCADE, null=True)
 	slug = models.SlugField(blank=True)
 	size=models.ForeignKey(Size,on_delete=models.CASCADE)

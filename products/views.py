@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse,Http404
+from django.http import JsonResponse
 from django.db import models
 from .models import Category, Product,Cart
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
-
+from django.views.generic.list import ListView
 
 
 
@@ -54,15 +55,17 @@ def add_to_cart(request,Product.id):
 """
 # Search
 
-# def search(request):
-	
-#     if request.method=="POST":
-#         inputinsearchbar=request.POST['inputinsearchbar']
-#         products=Product.objects.filter(title__contains=inputinsearchbar)#this is from model products..
-#         return render(request, 'products/search.html', {'inputinsearchbar':inputinsearchbar,'products':products})
-#     else:
-#         return render(request, 'products/search.html', {})
 
+
+# Search
+
+def search_result(request):
+	q=request.GET['q']
+	if not q:
+		return HttpResponse("please input some texts")
+	else:
+		data=Product.objects.filter(name__icontains=q).order_by('-id')
+		return render(request,'products/search_result.html',{'data':data})
 
 
 # Add to cart
@@ -88,9 +91,6 @@ def add_to_cart(request):
 	else:
 		request.session['cartdata']=cart_p
 	return JsonResponse({'data':request.session['cartdata'],'totalitems':len(request.session['cartdata'])})
-
-
-
 
 
 
