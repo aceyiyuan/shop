@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
 
+from itertools import chain
+
+
 
 
 def index(request):
@@ -60,12 +63,19 @@ def add_to_cart(request,Product.id):
 # Search
 
 def search_result(request):
+
 	q=request.GET['q']
 	if not q:
 		return HttpResponse("please input some texts")
 	else:
-		data=Product.objects.filter(name__icontains=q).order_by('-id')
+		product_result=Product.objects.filter(name__icontains=q).order_by('id')
+		category_result=Category.objects.filter(name__icontains=q).order_by('id')
+
+		data = chain(product_result, category_result)
 		return render(request,'products/search_result.html',{'data':data})
+
+
+
 
 
 # Add to cart
