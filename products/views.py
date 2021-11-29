@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,Http404
 from django.http import JsonResponse
 from django.db import models
-from .models import Category, Product,Cart
+from .models import Category, Product
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.views.generic.list import ListView
@@ -68,10 +68,10 @@ def search_result(request):
 	if not q:
 		return HttpResponse("please input some texts")
 	else:
-		product_result=Product.objects.filter(name__icontains=q).order_by('id')
-		category_result=Category.objects.filter(name__icontains=q).order_by('id')
+		product_result=Product.objects.filter(name__icontains=q).order_by('id') #filter product results by search word
+		category_result=Category.objects.filter(name__icontains=q).order_by('id') #filter category results by search word
 
-		data = chain(product_result, category_result)
+		data = chain(product_result, category_result) #from itertools import chain
 		return render(request,'products/search_result.html',{'data':data})
 
 

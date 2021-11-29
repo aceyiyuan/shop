@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Product, Category,Cart,CartItems,Size,Portion
+from .models import Product, Category,Size,Portion
 
 
 
@@ -14,7 +14,5 @@ class ProductAdmin(admin.ModelAdmin):
 	list_display=("id","name","category","slug","size")
 admin.site.register(Product, ProductAdmin)
 
-admin.site.register(CartItems)
-admin.site.register(Cart)
 admin.site.register(Size)
 admin.site.register(Portion)
