@@ -8,7 +8,30 @@ Install the project dependencies with
 pip install -r requirements.txt
 ```
 
-run the project with command
+Create superuser
+
+```
+python manage.py createsuperuser
+```
+Enter the Username of your choice and press enter
+
+```
+Username: admin
+```
+
+Enter the Email address and press enter.(It can be left blank)
+
+```
+Email address:
+```
+
+Enter password:
+
+```
+Password: test
+```
+
+Run the project with command
 
 ```
 python manage.py runserver
@@ -35,7 +58,7 @@ Able to search both products or categories by name, products.code
 
 if products then return results sort by product name and product price, if search key word is category, then only return category name
 
-
+#django 
 
 
 
