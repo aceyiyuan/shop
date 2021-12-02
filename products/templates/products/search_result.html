@@ -2,9 +2,14 @@
 
 
 {% for data in data %}
-	
-{{data.name}}<br/>
+	{% if data.price %}
+	Product:
+{{data.name}}--{{data.price}}<br/>
 
+   {% else %}
+  Category-{{data.name}}<br/>
+   {% endif %}
+  
 
 {% empty %}   
 	

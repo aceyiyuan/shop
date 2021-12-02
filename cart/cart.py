@@ -11,20 +11,21 @@ class Cart:
     def __init__(self, request):
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
-        if settings.CART_SESSION_ID not in request.session:
+        if not cart:
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
-    def add(self, product, qty):
+    def add(self, product, qty=1):
         """
         Adding and updating the users cart session data
         """
         product_id = str(product.id)
 
-        if product_id in self.cart:
-            self.cart[product_id]["qty"] = qty
+        if str(product.id) not in self.cart:
+            self.cart[product_id]["qty"] = {'qty':0,"price": str(product.price)}
+
         else:
-            self.cart[product_id] = {"price": str(product.price), "qty": qty}
+            self.cart[product_id]['qty']+=qty
 
         self.save()
 
@@ -51,36 +52,7 @@ class Cart:
         """
         return sum(item["qty"] for item in self.cart.values())
 
-    def update(self, product, qty):
-        """
-        Update values in session data
-        """
-        product_id = str(product)
-        if product_id in self.cart:
-            self.cart[product_id]["qty"] = qty
-        self.save()
 
-    def get_total_price(self):
-        return sum(Decimal(item["price"]) * item["qty"] for item in self.cart.values())
-
-
-
-    def delete(self, product):
-        """
-        Delete item from session data
-        """
-        product_id = str(product)
-
-        if product_id in self.cart:
-            del self.cart[product_id]
-            self.save()
-
-    def clear(self):
-        # Remove cart from session
-        del self.session[settings.CART_SESSION_ID]
-        del self.session["address"]
-        del self.session["purchase"]
-        self.save()
 
     def save(self):
         self.session.modified = True
