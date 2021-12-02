@@ -58,7 +58,7 @@ Register http://127.0.0.1:8000/products/register
 
 #Search function:
 
-Able to search both products or categories by name, products.code
+Able to search both products or categories by name, products.code. If inputs product code e.g. piz002, piz003, piz004 then search result returns product name and price)
 
 if products then return results sort by product name and product price, if search key word is category, then only return category name
 
