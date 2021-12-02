@@ -62,7 +62,9 @@ Able to search both products or categories by name, products.code
 
 if products then return results sort by product name and product price, if search key word is category, then only return category name
 
-#django 
+Frontend
+
+Inspired by  Createx Studio 's bootstrap template
 
 
 
