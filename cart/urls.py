@@ -7,9 +7,9 @@ app_name = 'cart'
 
 urlpatterns = [
  
-    path('add/id', views.cart_add, name='card_add'),
+    path('add/<int:product_id>', views.cart_add, name='card_add'),
     path('cart/', views.cart_detail, name='cart_detail'),
-    path('remove/id',views.cart_remove, name='cart_remove'),
+    path('remove/<int:product_id>',views.cart_remove, name='cart_remove'),
 
 ]
 #handler404='cart.views.error_404_view'

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,Http404
 from django.http import JsonResponse
 from django.db import models
-import cart
+from cart.views import *
 from .models import Category, Product
 from django.contrib.auth.decorators import login_required
 
@@ -42,6 +42,15 @@ def product_list(request):
 
 
 def product_detail(request, id):
+
+	product = get_object_or_404(Product, id=id)
+	category=Category.objects.get(id=id)
+
+
+	return render(request, 'products/product_detail.html', {'product':product})
+
+"""
+def product_detail(request, id):
 	try:
 		product = get_object_or_404(Product, id=id)
 		category=Category.objects.get(id=id)
@@ -59,7 +68,7 @@ def product_detail(request, id):
 	return render(request, 'products/product_detail.html', context)
 
 
-
+"""
 def search_result(request):
 
 	q=request.GET['q']
