@@ -7,12 +7,12 @@
         {% with product=item.product %}
           <tr>
             <td>
-              <a href="{{ product.get_absolute_url }}">
-              </a>
+              
+          
             </td>
             <td>{{ product.name }}</td>
             <td>{{ item.quantity }}</td>
-            <td><a href="{% url  'cart_remove' product.id %}">Remove</a></td>
+            <td><a href="{% url  'cart:cart_remove' product.id %}">Remove</a></td>
             <td class="num">{{ item.price }}</td>
             <td class="num">{{ item.total_price }}</td>
           </tr>
