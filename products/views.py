@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,Http404
 from django.http import JsonResponse
 from django.db import models
+import cart
 from .models import Category, Product
 from django.contrib.auth.decorators import login_required
 
@@ -17,8 +18,6 @@ from django.contrib import messages
 from itertools import chain
 from django.db.models import Q
 #import django_filters
-
-
 
 
 
@@ -40,44 +39,24 @@ def product_list(request):
 
 
 #product detail 
-def product_detail(request,id):
+
+
+def product_detail(request, id):
 	try:
-		product=Product.objects.get(id=id)
+		product = get_object_or_404(Product, id=id)
 		category=Category.objects.get(id=id)
+		cart_product_form = CartAddProductForm()
 
+		context = {
+	        'product': product,
+	        'category':category,
+	        'cart_product_form': cart_product_form,
+	        }
+	
 	except Product.DoesNotExist:
+		
 		raise Http404 ("this product id does not exit")
-	return render(request,'products/product_detail.html', {'product':product, 'category':category, 'id':product.id,})
-
-
-"""
-# cart List 
-def cart_list(request):
-	cart=Cart.objects.all()
-	return render(request,'products/cart_list.html',{'cart':cart})
-#add to cart
-"""
-"""
-@login_required
-def add_to_cart(request,Product.id):
-    item = get_object_or_404(Product, id=product.id)
-    cart,created = Cart.objects.get_or_create(user=request.user, active=True)
-    order,created = Product.objects.get_or_create(item=product,cart=cart)
-    order.quantity += 1
-    order.save()
-    messages.success(request, "Cart updated!")
-    return redirect('cart')
-
-"""
-# Search
-
-
-
-# Search
-
-
-
-
+	return render(request, 'products/product_detail.html', context)
 
 
 

@@ -1,32 +1,39 @@
 
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render,redirect  
 from . cart import Cart
 from .forms import CartAddProductForm
 from products.models import Product
 
 
-#from django.views.decorators.http import require_POST
 
-
-
-def cart_summary(request):
+@require_POST
+def cart_add(request, product_id):
     cart = Cart(request)
-    return render(request, 'cart/cart_summary.html', {'cart': cart})
+    product = get_object_or_404(Product, id=product_id)
+    form = CartAddProductForm(request.POST)
+    if form.is_valid():
+        cd = form.cleaned_data
+        cart.add(product=product, quantity=cd['quantity'], update_quantity=cd['update'])
+    return redirect('cart:cart_add')
 
 
-def cart_add(request):
+def cart_remove(request, product_id):
     cart = Cart(request)
-    if request.POST.get('action') == 'post':
-        product_id = int(request.POST.get('product.id'))
-        product_qty = int(request.POST.get('productqty'))
-        product = get_object_or_404(Product, id=product_id)
-        cart.add(product=product, qty=product_qty)
+    product = get_object_or_404(Product, id=product_id)
+    cart.remove(product)
+    return redirect('cart:cart_remove')
 
-        cartqty = cart.__len__()
-        response = JsonResponse({'qty': cartqty})
-        return response
 
+def cart_detail(request):
+    cart = Cart(request)
+    products = []
+    for item in cart:
+        item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
+        products.append(item)
+    context = { 'cart': cart }
+    context['products'] = products
+    return render(request, 'cart/detail.html', context)
 
 
