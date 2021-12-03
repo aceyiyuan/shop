@@ -55,7 +55,9 @@ Index page http://127.0.0.1:8000/products/
 
 Product_list http://127.0.0.1:8000/products/product_list
 
-Product_details: http://127.0.0.1:8000/products/product.id e.g. http://127.0.0.1:8000/products/2
+Product_details: http://127.0.0.1:8000/products/product.id e.g. http://127.0.0.1:8000/products/2 # to do:add function
+
+Cart summary page: http://127.0.0.1:8000/cart/
 
 Admin  http://127.0.0.1:8000/admin/
 
