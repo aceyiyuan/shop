@@ -67,7 +67,7 @@ class Product(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-  		return reverse('products/product_detail.html', args=[str(self.id)])
+  		return reverse('product:product_detail', args=[str(self.id)])
 
 	def image_tag(self):
 		return mark_safe('<img src="%s" width="50" height="50" />)'% (self.image.url))

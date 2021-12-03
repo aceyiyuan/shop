@@ -46,8 +46,9 @@
                </div>
                <div class="d-flex align-items-center justify-content-between">
                   <div class="product-price"><span class="text-accent">{{ product.price }}</span></div>
-                <button class="btn btn-danger btn-sm" type="button">+<i class="ci-cart fs-base ms-1"></i></button>
+                <button class="btn btn-danger btn-sm" type="submit"  onclick="location.href = '{{product.get_absolute_url}}'">+<i class="ci-cart fs-base ms-1"></i></button>
                </div>
+
             </div>
          </div>
       </div>
