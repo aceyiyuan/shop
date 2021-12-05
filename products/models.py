@@ -4,6 +4,7 @@ from django.utils.html import mark_safe
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+
 # food size
 
 class Size(models.Model):

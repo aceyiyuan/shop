@@ -1,14 +1,12 @@
  <h1>Your shopping cart</h1>
   <table class="table">
   
-   
     <tbody>
+
       {% for item in cart %}
         {% with product=item.product %}
           <tr>
-            <td>
-              
-          
+            <td> 
             </td>
             <td>{{ product.name }}</td>
             <td>{{ item.quantity }}</td>
@@ -21,12 +19,21 @@
       <tr class="total">
         <td>Total</td>
         <td colspan="4"></td>
+        
         <td class="num">euro:{{ cart.get_total_price }}</td>
+
       </tr>
+
     </tbody>
   </table>
+
+
   <p class="text-right">
     <a href="{% url 'product:product_list'%}" class="button light">Continue shopping</a>
     <a href="#" class="button">Checkout</a>
+
+<br/>
+
+You have added {{cart.get_total_qty}} products to cart in total
 
 
