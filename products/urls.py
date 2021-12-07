@@ -11,8 +11,6 @@ urlpatterns=[
 	path('products/search_result/', views.search_result, name='search_result'),
 	path('products/<id>/', views.product_detail, name='product_detail'),
 	path('products/', views.index, name='index'),
-	path('products/register',views.register,name='register'),
-
 ]
 
 handler404='products.views.error_404_view'

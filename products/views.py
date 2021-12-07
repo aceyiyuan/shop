@@ -74,22 +74,6 @@ def search_result(request):
 		return render(request,'products/search_result.html',{'data':data})
 
 
-def register(request):
-	if request.method=='POST':
-		form=NewUserForm(request.POST)
-		if form.is_valid():
-			form.save()
-			username=form.cleaned_data.get('username')
-			pwd=form.cleaned_data.get('password1')
-			user=authenticate(username=username,password=pwd)
-			login(request, user)
-			messages.success(request, "Registration successful." )
-			return redirect('/products/')
-		messages.error(request, "Unsuccessful registration")
-	form=NewUserForm
-	return render(request, 'products/register.html',{'form':form})
-
-
 
 def error_404_view(request, exception):
 	return render(request, 'products/404.html')

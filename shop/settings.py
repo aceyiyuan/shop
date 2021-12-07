@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'cart.apps.CartConfig',
     'crispy_forms',
+    'authentication',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
