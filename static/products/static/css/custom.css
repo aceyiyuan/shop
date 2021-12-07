@@ -96,3 +96,18 @@ li { /* styles all li elements*/
 a {
     transition: color .25s ease-in-out;
 }
+
+
+/*register box*/
+
+.form-row div.help {
+    padding: 2px 3px;
+}
+.help, p.help, form p.help, div.help, form div.help, div.help li {
+    font-size: 11px;
+    color: var(--body-quiet-color);
+}
+user agent stylesheet
+div {
+    display: block;
+}
