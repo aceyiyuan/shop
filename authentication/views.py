@@ -63,42 +63,6 @@ def register_user(request):
 
     return render(request, "accounts/register.html", {"form": form, "msg": msg, "success": success})
 
-"""
-
-def password_reset_request(request):
-    if request.method == "POST":
-        password_reset_form = PasswordResetForm(request.POST)
-        if password_reset_form.is_valid():
-    
-            data = password_reset_form.cleaned_data['email']
-            associated_users = User.objects.filter(Q(email=data))
-            if associated_users.exists():
-                for user in associated_users:
-                    subject = "Password Reset Requested"
-                    email_template_name = "accounts/password_reset_email.txt"
-                    c = {
-                    "email":user.email,
-                    'domain':'127.0.0.1:8000',
-                    'site_name': 'Website',
-                    "uid": urlsafe_base64_encode(force_bytes(user.pk)),
-
-                    "user": user,
-                    'token': default_token_generator.make_token(user),
-                    'protocol': 'http',
-                    }
-                    email = render_to_string(email_template_name, c)
-               
-                    try:
-                        send_mail(subject, email, 'org.sugar@gmail.com' , [user.email], fail_silently=False)
-                    except BadHeaderError:
-                        return HttpResponse('Invalid header found.')
-                    return redirect ("accounts/password_reset/done/")
-            else:
-                messages.error(request, 'This username does not exist in the system.')
-    password_reset_form = PasswordResetForm()
-    return render(request=request, template_name="accounts/password_reset_form.html", context={"password_reset_form":password_reset_form})
-
-"""
 
 def password_reset_request(request):
     if request.method == "POST":
@@ -116,7 +80,8 @@ def password_reset_request(request):
                     'site_name': 'my website name',
                     "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                     'token': default_token_generator.make_token(user),
-                    'protocol': 'https',
+                    'protocol':'http',
+                   # 'protocol': 'https', #You're accessing the development server over HTTPS, but it only supports HTTP.
                     }
                     email = render_to_string(email_template_name, c)
                     try:
@@ -126,7 +91,7 @@ def password_reset_request(request):
                         return HttpResponse('Invalid header found.')
                         
                     messages.success(request, 'A message with reset password instructions has been sent to your inbox.')
-                    return redirect ("/products")
+                    return redirect ("/password_reset/done")
             messages.error(request, 'An invalid email has been entered.')
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="accounts/password_reset_form.html", context={"password_reset_form":password_reset_form})
