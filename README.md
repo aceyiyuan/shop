@@ -77,3 +77,12 @@ Inspired by  Createx Studio 's bootstrap template
 
 
 
+
+#to do list
+
+1. override authentication templates and frontend
+
+https://django-allauth.readthedocs.io/en/latest/templates.html
+
+
+2. Product_list database rebuild
