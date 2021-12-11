@@ -111,3 +111,145 @@ user agent stylesheet
 div {
     display: block;
 }
+
+
+/*sign in /signup page*/
+
+
+.bg-secondary {
+    --bs-bg-opacity: 1;
+    background-color: #f6f9fc !important;
+}
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #e3e9ef;
+    border-top-left-radius: calc(0.4375rem - 1px);
+    border-top-right-radius: calc(0.4375rem - 1px);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1055;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+
+.password-toggle-btn .password-toggle-indicator::before {
+    content: "";
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+
+
+.password-toggle-btn .password-toggle-indicator {
+    transition: color .2s ease-in-out;
+    color: #7d879c;
+    font-family: "cartzilla-icons";
+    font-style: normal;
+}
+
+html * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.password-toggle-btn {
+    position: absolute;
+    top: 50%;
+    right: 0.625rem;
+    margin-bottom: 0;
+    padding: 0.5rem;
+    transform: translateY(-50%);
+    font-size: 1.0625rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+
+.modal-header .btn-close {
+    padding: 0.5rem 0.625rem;
+    margin: -0.5rem -0.625rem -0.5rem auto;
+}
+button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+    cursor: pointer;
+}
+.btn-close {
+    transition: opacity .15s ease-in-out;
+}
+.btn-close {
+    box-sizing: content-box;
+    width: 0.75rem;
+    height: 0.75rem;
+    padding: 0.25rem 0.25rem;
+    color: #000;
+    background: transparent url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e) center/0.75rem auto no-repeat;
+    border: 0;
+    border-radius: 0.3125rem;
+    opacity: .5;
+}
+button, [type=button], [type=reset], [type=submit] {
+    -webkit-appearance: button;
+}
+
+
+
+.modal-content .card-header-tabs {
+    margin-right: -1.25rem;
+    margin-bottom: -1rem;
+    margin-left: -1.25rem;
+}
+.nav-tabs.card-header-tabs {
+    margin-top: -0.3125rem;
+    margin-right: -1.25rem;
+    margin-left: -1.25rem;
+}
+.card-header-tabs {
+    margin-right: -0.625rem;
+    margin-bottom: -0.625rem;
+    margin-left: -0.625rem;
+    border-bottom: 0;
+}
+.nav-tabs {
+    border-bottom: 1px solid #e3e9ef;
+}
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.btn-primary.btn-shadow {
+    box-shadow: 0 0.5rem 1.125rem -0.5rem rgb(254 105 106 / 90%);
+}
+button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled) {
+    cursor: pointer;
+}
+.btn-primary, .btn-success, .btn-danger, .btn-warning, .btn-info, .btn-dark {
+    color: #fff !important;
+}
+.w-100 {
+    width: 100% !important;
+}
+
+
+nav-tabs.card-header-tabs .nav-link.active {
+    background-color: transparent!important;
+    border-bottom-color: transparent!important;
+}
