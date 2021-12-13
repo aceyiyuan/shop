@@ -29,13 +29,18 @@
 </div>
 <div class="modal-body tab-content py-4">
 <form class="needs-validation tab-pane fade active show login" autocomplete="off" novalidate="" method="POST" action="{% url 'account_login' %}">
-   {% csrf_token %}
-   {% for key, value in form.errors.items %}
-   <li>{% if key != '__all__' %}{{ key }} {% endif %}{{ value }}</li>
-   {% endfor %}
+ {% csrf_token %}
+  {% if form.errors %} 
+  {% for error in form.non_field_errors %}
+      <div class="alert alert-error">
+          {{ error|escape }}
+      </div>
+  {% endfor %}
+  {% endif %}
    <div class="mb-3">
       <label for="id_login si-email">E-mail:</label>
       <input class="form-control" type="email" name="login" placeholder="johndoe@example.com"  autocomplete="email" required="" id="id_login si-email">
+       {{ form.login.errors }}
    </div>
    <div class="mb-3">
       <label class="form-label" for="id_password si-password">Password:</label> 
@@ -47,6 +52,7 @@
             </label>
             did not work skip-->
       </div>
+       {{ form.password.errors }}
    </div>
    <div class="mb-3 d-flex flex-wrap justify-content-between">
       <div class="form-check mb-2">
