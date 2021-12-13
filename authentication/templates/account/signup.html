@@ -1,0 +1,63 @@
+
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+<div class="modal fade show" id="signin-modal" tabindex="-1" style="display: block;" aria-modal="true" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary" style="background-color: #f6f9fc !important;">
+            <ul class="nav nav-tabs card-header-tabs" role="tablist">
+
+              <li class="nav-item"><a class="nav-link fw-medium"href="{{login_url }}"style="color: grey;"  data-bs-toggle="tab" role="tab" aria-selected="false"><i class="fas fa-lock"></i>&nbsp; Sign in</a></li>
+              <li class="nav-item"><a class="nav-link fw-medium active" style="color:#fe696a;background-color: transparent; border-color: transparent" href="{{signup_url }}" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="fas fa-user"></i>&nbsp; Sign up</a></li>
+            </ul>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body tab-content py-4">
+         
+
+
+<form class="signup needs-validation tab-pane fade active show " id="signup_form" autocomplete="off" novalidate="" method="post" action="{% url 'account_signup' %}">
+   {% csrf_token %}
+
+   {% for key, value in form.errors.items %}
+   <li>{% if key != '__all__' %}{{ key }} {% endif %}{{ value }}</li>
+   {% endfor %}
+<div class="mb-3">
+      <label for="id_email si-email">E-mail:</label>
+      <input class="form-control" type="email" name="email" placeholder="johndoe@example.com"  autocomplete="email" required="" id="id_email si-email">
+   </div>
+
+
+ <div class="mb-3">
+                <label class="form-label" for=" id_username su-name">User name</label>
+                <input class="form-control" type="text" id="su-name" placeholder="John Doe" name="username" autocomplete="username" required="">
+              
+              </div>
+
+          <div class="mb-3">
+      <label class="form-label" for="id_password1 si-password">Password:</label> 
+      <div class="password-toggle">
+         <input class="form-control"  type="password" name="password1" placeholder="Password" autocomplete="current-password" required="" id="id_password1 si-password">
+         <!-- <label class="password-toggle-btn" aria-label="Show/hide password">
+            <input class="password-toggle-check" type="checkbox"> 
+            <span class="password-toggle-indicator"></span>
+            </label>
+            did not work skip-->
+      </div>
+   </div>
+  
+    {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+   <button class=" primaryAction btn btn-primary btn-shadow d-block w-100" style="box-shadow: 0 0.5rem 1.125rem -0.5rem rgb(254 105 106 / 90%); background-color: #fe696a;
+      border-color: #fe696a;" type="submit" >{% trans "Sign Up" %}</button>
+
+
+</form>
+{% endblock %}
