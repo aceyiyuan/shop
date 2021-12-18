@@ -62,7 +62,9 @@ Cart summary page: http://127.0.0.1:8000/cart/
 
 Admin  http://127.0.0.1:8000/admin/
 
-Register http://127.0.0.1:8000/products/register
+Login http://127.0.0.1:8000/login
+Signup http://127.0.0.1:8000/signup
+Password reset http://127.0.0.1:8000/password/reset/  -todo frontend
 
 
 
