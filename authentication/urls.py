@@ -7,6 +7,7 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('login/', allauth.account.views.LoginView, name="login"),
+    path('logout/', allauth.account.views.LogoutView, name="logout"),
     path('signup/',allauth.account.views.SignupView, name="signup"),
     path("logout/", LogoutView.as_view(), name="logout"),
     path("password_reset/", password_reset_request, name="password_reset"),

@@ -23,7 +23,7 @@
 
 
 <form class="signup needs-validation tab-pane fade active show " id="signup_form" autocomplete="off" novalidate="" method="post" action="{% url 'account_signup' %}">
-   {% csrf_token %}
+{% csrf_token %}
 {% if form.errors %}
 
     
@@ -38,11 +38,7 @@
       <label for="id_email si-email">E-mail:</label>
       <input class="form-control" type="email" name="email" placeholder="johndoe@example.com"  autocomplete="email" required="" id="id_email si-email">
       {{ form.email.errors }}
-   </div>
-
 </div>
-
-{% endblock %}
 
 
  <div class="mb-3">
@@ -65,12 +61,9 @@
    </div>
   
     {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-   <button class=" primaryAction btn btn-primary btn-shadow d-block w-100" style="box-shadow: 0 0.5rem 1.125rem -0.5rem rgb(254 105 106 / 90%); background-color: #fe696a;
-      border-color: #fe696a;" type="submit" >{% trans "Sign Up" %}</button>
-
-
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+   {% endif %}
+   <button class=" primaryAction btn btn-primary btn-shadow d-block w-100" style="box-shadow: 0 0.5rem 1.125rem -0.5rem rgb(254 105 106 / 90%); background-color: #fe696a;border-color: #fe696a;" type="submit" >{% trans "Sign Up" %}</button>
 </form>
 </div>
 </div>

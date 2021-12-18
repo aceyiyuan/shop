@@ -66,8 +66,9 @@ Login http://127.0.0.1:8000/login
 
 Signup http://127.0.0.1:8000/signup
 
-Password reset http://127.0.0.1:8000/password/reset/  -todo frontend
+Signout http://127.0.0.1:8000/logout/  -todo frontend
 
+Password reset http://127.0.0.1:8000/password/reset/  -todo frontend
 
 
 
@@ -91,3 +92,5 @@ https://django-allauth.readthedocs.io/en/latest/templates.html
 
 
 2. Product_list database rebuild
+
+3. authentication messages accumulated. Customize signout page https://github.com/pennersr/django-allauth/issues/636
