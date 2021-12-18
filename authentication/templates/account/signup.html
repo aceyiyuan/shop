@@ -1,5 +1,5 @@
 
-{% extends "account/base.html" %}
+{% extends "products/base.html" %}
 
 {% load i18n %}
 
@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="modal fade show" id="signin-modal" tabindex="-1" style="display: block;" aria-modal="true" role="dialog">
+
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header bg-secondary" style="background-color: #f6f9fc !important;">
@@ -16,7 +16,7 @@
               <li class="nav-item"><a class="nav-link fw-medium"href="{{login_url }}"style="color: grey;"  data-bs-toggle="tab" role="tab" aria-selected="false"><i class="fas fa-lock"></i>&nbsp; Sign in</a></li>
               <li class="nav-item"><a class="nav-link fw-medium active" style="color:#fe696a;background-color: transparent; border-color: transparent" href="{{signup_url }}" data-bs-toggle="tab" role="tab" aria-selected="true"><i class="fas fa-user"></i>&nbsp; Sign up</a></li>
             </ul>
-            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            <a  value="Close me" href="/products/" style="color:grey;text-decoration: none;">Close</a>
           </div>
           <div class="modal-body tab-content py-4">
          
@@ -39,6 +39,10 @@
       <input class="form-control" type="email" name="email" placeholder="johndoe@example.com"  autocomplete="email" required="" id="id_email si-email">
       {{ form.email.errors }}
    </div>
+
+</div>
+
+{% endblock %}
 
 
  <div class="mb-3">
@@ -68,4 +72,7 @@
 
 
 </form>
+</div>
+</div>
+</div>
 {% endblock %}

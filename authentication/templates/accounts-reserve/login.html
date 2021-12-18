@@ -74,3 +74,34 @@
     </div>
     </html>
  -->
+
+
+
+ <div class="mb-3">
+      <label for="id_login si-email">E-mail:</label>
+      <input class="form-control" type="email" name="login" placeholder="johndoe@example.com"  autocomplete="email" required="" id="id_login si-email">
+      <div class="invalid-feedback">Please provide a valid email address.</div>
+   </div>
+   <div class="mb-3">
+      <label class="form-label" for="id_password si-password">Password:</label> 
+      <div class="password-toggle">
+         <input class="form-control"  type="password" name="password" placeholder="Password" autocomplete="current-password" required="" id="id_password si-password">
+         <!-- <label class="password-toggle-btn" aria-label="Show/hide password">
+            <input class="password-toggle-check" type="checkbox"> 
+            <span class="password-toggle-indicator"></span>
+            </label>
+            did not work skip-->
+      </div>
+   </div>
+   <div class="mb-3 d-flex flex-wrap justify-content-between">
+      <div class="form-check mb-2">
+         <input class="form-check-input" type="checkbox" id="id-remember si-remember">
+         <label class="form-check-label" for="id_remember si-remember">Remember Me</label>
+      </div>
+      <a  class=" button secondaryAction fs-sm" style="color: #fe696a" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+   </div>
+   {% if redirect_field_value %}
+   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+   {% endif %}
+   <button class=" primaryAction btn btn-primary btn-shadow d-block w-100" style="box-shadow: 0 0.5rem 1.125rem -0.5rem rgb(254 105 106 / 90%); background-color: #fe696a;
+      border-color: #fe696a;" type="submit" >{% trans "Sign In" %}</button>

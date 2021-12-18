@@ -1,16 +1,17 @@
 {% load static %}
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
    <head>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="{% static 'products/static/css/custom.css'%}">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="jquery.fancybox.min.css">
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       <script src="{% static 'products/static/js/main.js'%}" defer></script>
    </head>
    <body>
-
       <nav class="navbar navbar-expand-lg navbar-dark  bg-darker">
          <div class="container">
             <a class="navbar-brand" href="/">Nomiya</a>
@@ -25,59 +26,36 @@
                   <li class="nav-item">
                      <a class="nav-link text-white" href="product_list">Product List</a>
                   </li>
-                  <li class="nav-item">
-                     <a class="nav-link text-white" href="/admin/">Admin</a>
-                  </li>
+                 
                   <li class="nav-item">
                      <a class="nav-link text-white" href="/cart"><i class="fa fa-shopping-cart"></i> Cart (<span class="cart-list">{{request.session.cart|length}}</span>)</a>
-
                   </li>
-
-                   <li class="nav-item">
-                     <a class="nav-link text-white" href="/search" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
-                     <i class="fa fa-search" aria-hidden="true"></i>
-                     </a>
-
-                  
-<!-- 
-                  <form class="form-inline my-2 my-lg-0" action="{% url 'product:search_result' %}">
+                  <form class="form-inline my-2 my-lg-0" action="{% url 'product:search_result' %}" >
                      {% csrf_token %}
                      <div class="input-group">
                         <input name="q" type="text" class="form-control" placeholder="search" />
                         <div class="input-group-append">
-                           <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fas fa-search">Search</i></button>
+                           <button class="btn btn-dark" type="submit" id="button-addon2"><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                      </div>
-                  </form> -->
+                  </form>
                   <li class="nav-item">
-                     <a class="nav-link text-white" href="/login" id="navbarDropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+                     <a data-fancybox data-type="iframe" class="nav-link text-white"  href="/login"  data-iframe='{"preload":false}' role="button"  aria-haspopup="true" aria-expanded="false">
                      <i class="fa fa-user "></i> 
                      </a>
+                  </li>
+                   <li class="nav-item">
+                     <a class="nav-link text-white" href="/admin/">Admin</a>
+                  </li>
+               </ul>
             </div>
-            </li>
-            </ul>
-         </div>
          </div>
       </nav>
-      </nav> 
-      <section class="bg-darker bg-size-cover bg-position-center py-5 py-lg-10" style="background-image: url(/media/images/hero-bg.jpg);">
-         <div class="container pb-5">
-            <div class="row justify-content-center pb-5">
-               <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 text-center">
-                  <h5 class="text-light fw-light">#1 Food Delivery Service since 2010</h5>
-                  <div class="h1 text-light mb-3 pb-4">
-                     We deliver your favorite food fresh &amp; fast in
-                     <div class="dropdown d-inline-block ms-1">
-                        <a class="dropdown-toggle newcolor" href="#" data-bs-toggle="dropdown">New York</a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item fs-base" href="#">Los Angeles</a><a class="dropdown-item fs-base" href="#">Chicago</a><a class="dropdown-item fs-base" href="#">Houston</a><a class="dropdown-item fs-base" href="#">Philadelphia</a><a class="dropdown-item fs-base" href="#">San Diego</a><a class="dropdown-item fs-base" href="#">Miami</a></div>
-                     </div>
-                  </div>
-                  <a class="btn btn-danger" href="#cuisine" data-scroll="">What do you want to eat?</a>
-               </div>
-            </div>
-         </div>
-      </section>
+      {% block body %}
       {% block content %}
+      {% endblock %}
+      {% endblock %}
+      {% block extra_body %}
       {% endblock %}
       <footer class="footer bg-darker pt-5">
          <div class="container pt-2">
@@ -139,5 +117,7 @@
             </div>
          </div>
       </footer>
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="jquery.fancybox.min.js"></script>
    </body>
 </html>

@@ -1,5 +1,6 @@
 ![Screenshot](index.jpg)
 
+![Screenshot](authentication.jpg)
 
 
 ## Running this project:
