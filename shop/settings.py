@@ -193,7 +193,10 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_SESSION_REMEMBER =None
 
 # config/settings.py
-LOGIN_REDIRECT_URL = '/products/'
+
+
+LOGIN_REDIRECT_URL = '/products/' #Default: '/accounts/profile/'
+
 ACCOUNT_LOGOUT_REDIRECT_URL = '/products/'
 
 

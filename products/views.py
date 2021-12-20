@@ -3,8 +3,10 @@ from django.http import HttpResponse,Http404
 from django.http import JsonResponse
 from django.db import models
 from cart.views import *
-from .models import Category, Product
+from .models import Category, Product,ProductAttribute
 from django.contrib.auth.decorators import login_required
+
+from django.db.models import Max,Min,Count,Avg
 
 from django.shortcuts import get_object_or_404,redirect
 from django.views.generic.list import ListView
@@ -34,9 +36,10 @@ def product_list(request):
 
 	products=Product.objects.order_by('id')[:10]
 	categories=Category.objects.all()
+	min_price=ProductAttribute.objects.aggregate(Min('price'))
 
 
-	return render(request, 'products/product_list.html',  {'products':products,'categories':categories})
+	return render(request, 'products/product_list.html',  {'products':products,'categories':categories,'min_price':min_price})
 
 
 #product detail 

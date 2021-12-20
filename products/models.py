@@ -49,16 +49,14 @@ class Product(models.Model):
 	name = models.CharField(max_length=50, verbose_name="name")
 	category=models.ForeignKey(Category, related_name='products',verbose_name="Category", on_delete=models.CASCADE, null=True)
 	slug = models.SlugField(blank=True)
-	code = models.CharField(max_length=6, verbose_name="code", default="piz002")
-	size=models.ForeignKey(Size, on_delete=models.CASCADE, verbose_name="size")
-	portion=models.ForeignKey(Portion,on_delete=models.CASCADE,verbose_name="portion")
 	description = models.TextField(blank=True,  verbose_name="description")
-	price = models.DecimalField(max_digits=20, decimal_places=2, default=9.99, verbose_name="price")
-	image = models.ImageField(upload_to='images', null=True, blank=True, verbose_name="image")
 	featured = models.BooleanField(default=False, verbose_name="featured")
 	created = models.DateTimeField(auto_now_add=True, verbose_name="created")
 	updated = models.DateTimeField(auto_now_add=True, verbose_name="updated")
 	available=models.BooleanField(default=True, verbose_name="available")
+	has_attributes = models.BooleanField(default=False, verbose_name="attribute")
+	image = models.ImageField(upload_to='images', null=True, blank=True, verbose_name="image")
+
 
 	class Meta:
 		verbose_name = "Product"
@@ -72,5 +70,32 @@ class Product(models.Model):
 
 	def image_tag(self):
 		return mark_safe('<img src="%s" width="50" height="50" />)'% (self.image.url))
+
+
+class ProductAttribute(models.Model):
+
+    product = models.ForeignKey('Product', related_name="product_attrs", on_delete=models.CASCADE)
+    size = models.ForeignKey('Size', related_name="size", on_delete=models.CASCADE)
+    portion = models.ForeignKey('Portion', related_name="portion", on_delete=models.CASCADE)
+    code = models.CharField(max_length=6, verbose_name="code", default="piz002")
+    price=models.DecimalField(max_digits=4, decimal_places=2, default=9.99, verbose_name="price")
+    
+    class Meta:
+    	verbose_name='ProductAttribute'
+    	verbose_name_plural='ProductAttributes'
+
+
+    def __str__(self):
+        return self.product.name
+
+
+
+
+
+
+
+
+
+
 
 

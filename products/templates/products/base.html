@@ -7,7 +7,7 @@
       <link rel="stylesheet" href="{% static 'products/static/css/custom.css'%}">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <link rel="stylesheet" type="text/css" href="jquery.fancybox.min.css">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       <script src="{% static 'products/static/js/main.js'%}" defer></script>
    </head>
@@ -42,11 +42,15 @@
 
                   
                   <li class="nav-item">
-                     {% if user.is_authenticated %}    
-                     <a data-fancybox data-type="iframe" class="nav-link text-white"  href="/logout"  data-iframe='{"preload":false}' role="button"  aria-haspopup="true" aria-expanded="false">   
+
+               
+                     {% if user.is_authenticated %}
+                     
+                     <a data-fancybox data-type="iframe" class="nav-link text-white"  href="/logout"  data-iframe='{"preload":false}' role="button"  aria-haspopup="true" aria-expanded="false">  
+                   
                      {% else %}
                       <a data-fancybox data-type="iframe" class="nav-link text-white"  href="/login"  data-iframe='{"preload":false}' role="button"  aria-haspopup="true" aria-expanded="false">
-                           {% endif %}
+                     {% endif %}
                            <i class="fa fa-user "></i> 
                               </a>
                             
