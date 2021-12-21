@@ -1,14 +1,7 @@
 {% extends 'products/base.html' %}
 {% load static %}
 {% block content %}
-<!--  {% for product in products %}
-   {{ product.name }}<br/>
-   {{ product.category }}</br>
-   {{ product.description|truncatewords:5 }}</br>
-   {{ product.size }}</br>
-   {{ product.portion }}</br>
-    <img src="{{product.image.url}}" alt ="image"/><br/>
-    {% endfor %} -->
+
 <section class="container tab-content py-4 py-sm-5">
    <h2 class="text-center pt-2 pt-sm-0 mb-sm-5">Pizza</h2>
    <div class="row pt-3 pt-sm-0">
@@ -20,35 +13,11 @@
             <div class="card-body pt-1 pb-2">
                <h3 class="product-title fs-md"><a style="color:black;font-size: 0.9375rem !important";href="#quick-view" data-bs-toggle="modal"> {{ product.name }}</a></h3>
                <p class="fs-ms text-muted" style="font-size: 0.9375rem !important">{{ product.description }}</p>
-               <div class="d-flex mb-1">
-                  <div class="form-check form-option form-check-justified mb-2">
-                     <input class="form-check-input" type="radio" name="size1" id="s1" checked>
-                     <label class="form-option-label" style="font-size: 0.9375rem !important" for="s1">Small</label>
-                  </div>
-                  <div class="form-check form-option form-check-justified mb-2">
-                     <input class="form-check-input" type="radio" name="size1" id="m1">
-                     <label class="form-option-label" style="font-size: 0.9375rem !important" for="m1">Medium</label>
-                  </div>
-                  <div class="form-check form-option form-check-justified mb-2">
-                     <input class="form-check-input" type="radio" name="size1" id="l1">
-                     <label class="form-option-label" style="font-size: 0.9375rem !important" for="l1">Large</label>
-                  </div>
-               </div>
-               <div class="d-flex mb-3">
-                  <div class="form-check form-option form-check-justified mb-2">
-                     <input class="form-check-input" type="radio" name="base1" id="thin1" chekced>
-                     <label class="form-option-label"  style="font-size: 0.9375rem !important" for="thin1">Thin</label>
-                  </div>
-                  <div class="form-check form-option form-check-justified mb-2">
-                     <input class="form-check-input" type="radio" name="base1" id="standard1" checked="">
-                     <label class="form-option-label" style="font-size: 0.9375rem !important" for="standard1">Standard</label>
-                  </div>
-                  
-               </div>
+             
                <div class="d-flex align-items-center justify-content-between">
-                   <div class="product-price"><span class="text-accent">{{product.product_attrs.first.price}}</span></div>
+                   <div class="product-price"><span class="text-accent">€{{product.product_attrs.first.price}}</span></div>
                
-                <button class="btn btn-danger btn-sm" type="submit"  onclick="location.href = '{{product.get_absolute_url}}'">+<i class="ci-cart fs-base ms-1"></i></button>
+                <button class="btn btn-danger btn-sm" type="submit"  onclick="location.href = '{{product.get_absolute_url}}'">+<i class="fa fa-shopping-cart"></i> </button>
                </div>
 
             </div>

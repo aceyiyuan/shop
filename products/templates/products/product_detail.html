@@ -2,8 +2,26 @@
 <!--to be done-->
 {{ product.name }}<br/>
 {{ product.category }}</br>
-{{product.size }}</br>
-{{ product.portion }}</br>
+{% for size in sizes %}
+   
+
+   <button type="button" class="btn btn-secondary">{{size.size__name}}</button>
+
+
+{% endfor %}
+<br>
+
+{% for portion in portions %}
+          
+       <button type="button" class="btn btn-secondary">{{portion.portion__name}}</button><br>
+{% endfor %}
+
+
+<br>
+
+
+<th>€<span class="product-price-{{product.id}}">{{product.product_attrs.first.price}}</span></th>
+
  {{ product.description|truncatewords:5 }}</br>
  <img src="{{product.image.url}}" alt ="image"/><br/>
 
