@@ -45,17 +45,17 @@ def product_list(request):
 def product_detail(request, id):
 	try:
 		product = get_object_or_404(Product, id=id)
-		sizes=ProductAttribute.objects.filter(product=product).values('size__id','size__name').distinct()
-		#portions=ProductAttribute.objects.filter(product=product).values('portion__id','portion__name','price','size_id').distinct()
-		portions=ProductAttribute.objects.filter(product=product).values('portion__id','portion__name').distinct()
+		
+		#sizes=ProductAttribute.objects.filter(product=product).values('size__id','size__name').distinct()
+		#portions=ProductAttribute.objects.filter(product=product).values('portion_id','portion__name','price','size__id').distinct()
 		category=Category.objects.get(id=id)
 		cart_product_form = CartAddProductForm()
 
 		context = {
 	        'product': product,
 	        'category':category,
-	        'sizes':sizes,
-	        'portions':portions,
+	        #'sizes':sizes,
+	        #'portions':portions,
 			'cart_product_form': cart_product_form,
 	        }
 	

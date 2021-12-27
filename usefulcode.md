@@ -67,4 +67,6 @@ cut from product_list page from line 23
                      <label class="form-option-label" style="font-size: 0.9375rem !important" for="standard1">Standard</label>
                   </div>
 
+#change prdouct price to product attribute price --product_detail.html line 22
 
+<th>€<span class="product-price-{{product.id}}">{{product.product_attrs.first.price}}</span></th>

@@ -56,6 +56,8 @@ class Product(models.Model):
 	available=models.BooleanField(default=True, verbose_name="available")
 	has_attributes = models.BooleanField(default=False, verbose_name="attribute")
 	image = models.ImageField(upload_to='images', null=True, blank=True, verbose_name="image")
+	price=models.DecimalField(max_digits=4, decimal_places=2, default=9.99, verbose_name="price")
+
 
 
 	class Meta:
@@ -73,7 +75,7 @@ class Product(models.Model):
 
 
 class ProductAttribute(models.Model):
-
+    
     product = models.ForeignKey('Product', related_name="product_attrs", on_delete=models.CASCADE)
     size = models.ForeignKey('Size', related_name="size", on_delete=models.CASCADE)
     portion = models.ForeignKey('Portion', related_name="portion", on_delete=models.CASCADE)

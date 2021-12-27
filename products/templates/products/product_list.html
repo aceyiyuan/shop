@@ -15,7 +15,7 @@
                <p class="fs-ms text-muted" style="font-size: 0.9375rem !important">{{ product.description }}</p>
              
                <div class="d-flex align-items-center justify-content-between">
-                   <div class="product-price"><span class="text-accent">€{{product.product_attrs.first.price}}</span></div>
+                   <div class="product-price"><span class="text-accent">€{{product.price}}</span></div>
                
                 <button class="btn btn-danger btn-sm" type="submit"  onclick="location.href = '{{product.get_absolute_url}}'">+<i class="fa fa-shopping-cart"></i> </button>
                </div>
