@@ -59,6 +59,7 @@ class Cart(object):
 
 
     def get_total_qty(self):
+       
         return sum(item['quantity'] for item in self.cart.values())
 
 

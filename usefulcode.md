@@ -70,3 +70,12 @@ cut from product_list page from line 23
 #change prdouct price to product attribute price --product_detail.html line 22
 
 <th>€<span class="product-price-{{product.id}}">{{product.product_attrs.first.price}}</span></th>
+
+# product_list.html line 18
+
+<div class="product-price"><span class="text-accent">€{{product.product_attrs.first.price}}</span></div>
+
+
+{'1':{'quantity':1,'price':'9,99'}, '2':{'quantity':1,'price':'12,99'}, '3':{'quantity':3,'price':'14,99'}}
+
+dict_values([{'quantity':1,'price',9.99},{'quantity':1,'price',12.99},{'quantity':3,'price',15.99}])

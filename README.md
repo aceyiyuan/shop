@@ -72,7 +72,7 @@ Password reset http://127.0.0.1:8000/password/reset/  -todo frontend
 
 
 
-#Search function:
+#Search function: #broken-tobefixed
 
 
 If search keyword is product.name or product.code (e.g. piz002, piz003, piz004...), the result will return sorted product name(s) and product price(s), then if search keyword is category, it will return category name

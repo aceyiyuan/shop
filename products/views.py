@@ -3,6 +3,8 @@ from django.http import HttpResponse,Http404
 from django.http import JsonResponse
 from django.db import models
 from cart.views import *
+from cart.forms import CartAddProductForm
+
 from .models import Category, Product,ProductAttribute
 from django.contrib.auth.decorators import login_required
 
@@ -10,7 +12,7 @@ from django.db.models import Max,Min,Count,Avg
 
 from django.shortcuts import get_object_or_404,redirect
 from django.views.generic.list import ListView
-from cart.forms import CartAddProductForm
+
 from .forms import NewUserForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
