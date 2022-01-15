@@ -62,7 +62,7 @@ def product_list(request):
 	min_price=ProductAttribute.objects.aggregate(Min('price'))
 	cart = request.session.get(settings.CART_SESSION_ID)
 	cart = sum(item['quantity'] for item in cart.values())
-	return render(request, 'products/product_list.html', {'data':[cart],'products':products,'categories':categories,'min_price':min_price})
+	return render(request, 'products/product_list.html', {'data':cart,'products':products,'categories':categories,'min_price':min_price})
 
 
 
