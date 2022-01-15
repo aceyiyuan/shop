@@ -28,7 +28,8 @@
                   </li>
                  
                   <li class="nav-item">
-                     <a class="nav-link text-white" href="/cart"><i class="fa fa-shopping-cart"></i> Cart (<span class="cart-list">{{request.session.cart.values}}</span>)</a>
+                     <a class="nav-link text-white" href="/cart"><i class="fa fa-shopping-cart"></i> Cart (<span class="cart-list">{{data}}</span>)</a>
+
                   </li>
                   <form class="form-inline my-2 my-lg-0" action="{% url 'product:search_result' %}" >
                      {% csrf_token %}

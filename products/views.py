@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.db import models
 from cart.views import *
 from cart.forms import CartAddProductForm
+from django.conf import settings
 
 from .models import Category, Product,ProductAttribute
 from django.contrib.auth.decorators import login_required
@@ -26,9 +27,32 @@ from django.db.models import Q
 
 
 
-def index(request):
+# def index(request):
 
-    return render(request,'products/index.html')
+#     return render(request,'products/index.html')
+
+
+def index(request):
+	cart = request.session.get(settings.CART_SESSION_ID)
+	cart = sum(item['quantity'] for item in cart.values())
+	context = {
+		"data":cart
+	}
+	return render(request,'products/index.html',context)
+
+
+
+
+
+# def product_list(request):
+
+# 	products=Product.objects.order_by('id')[:10]
+# 	categories=Category.objects.all()
+# 	min_price=ProductAttribute.objects.aggregate(Min('price'))
+
+
+# 	return render(request, 'products/product_list.html',  {'products':products,'categories':categories,'min_price':min_price})
+
 
 
 def product_list(request):
@@ -36,9 +60,10 @@ def product_list(request):
 	products=Product.objects.order_by('id')[:10]
 	categories=Category.objects.all()
 	min_price=ProductAttribute.objects.aggregate(Min('price'))
+	cart = request.session.get(settings.CART_SESSION_ID)
+	cart = sum(item['quantity'] for item in cart.values())
+	return render(request, 'products/product_list.html', {'data':[cart],'products':products,'categories':categories,'min_price':min_price})
 
-
-	return render(request, 'products/product_list.html',  {'products':products,'categories':categories,'min_price':min_price})
 
 
 #product detail 
