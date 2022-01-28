@@ -33,12 +33,14 @@ from django.db.models import Q
 
 
 def index(request):
-	cart = request.session.get(settings.CART_SESSION_ID)
-	cart = sum(item['quantity'] for item in cart.values())
-	context = {
-		"data":cart
-	}
-	return render(request,'products/index.html',context)
+
+	#cart = request.session.get(settings.CART_SESSION_ID)
+	#cart = sum(item['quantity'] for item in cart.values())
+	#context = {
+	#	"data":cart
+	#}
+	#print(cart)
+	return render(request,'products/index.html')
 
 
 
@@ -73,16 +75,18 @@ def product_detail(request, id):
 	try:
 		product = get_object_or_404(Product, id=id)
 		
-		#sizes=ProductAttribute.objects.filter(product=product).values('size__id','size__name').distinct()
-		#portions=ProductAttribute.objects.filter(product=product).values('portion_id','portion__name','price','size__id').distinct()
+		sizes=ProductAttribute.objects.filter(product=product).values('size__id','size__name').distinct()
+		bases=ProductAttribute.objects.filter(product=product).values('base_id','base__name','price','size__id').distinct()
+		sauces=ProductAttribute.objects.filter(product=product).values('sauce_id','sauce__name').distinct()
 		category=Category.objects.get(id=id)
 		cart_product_form = CartAddProductForm()
 
 		context = {
 	        'product': product,
 	        'category':category,
-	        #'sizes':sizes,
-	        #'portions':portions,
+	        'sizes':sizes,
+	        'bases':bases,
+	        'sauces':sauces,
 			'cart_product_form': cart_product_form,
 	        }
 	
