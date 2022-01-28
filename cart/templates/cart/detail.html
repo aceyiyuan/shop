@@ -10,6 +10,17 @@
             </td>
             <td>{{ product.name }}</td>
             <td>{{ item.quantity }}</td>
+
+            {% comment %} 
+
+             this place would show variants if have any, e.g. size and base for pizza, size for hambergur...
+              if  size : small, medium or large
+              if base : thin or standard
+
+              if have sauce: blah, blah
+
+            {% endcomment %}.
+           
             <td><a href="{% url  'cart:cart_remove' product.id %}">Remove</a></td>
             <td class="num">{{ item.price }}</td>
             <td class="num">{{ item.total_price }}</td>
