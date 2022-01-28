@@ -34,13 +34,19 @@ from django.db.models import Q
 
 def index(request):
 
-	#cart = request.session.get(settings.CART_SESSION_ID)
-	#cart = sum(item['quantity'] for item in cart.values())
-	#context = {
-	#	"data":cart
-	#}
-	#print(cart)
-	return render(request,'products/index.html')
+	cart = request.session.get(settings.CART_SESSION_ID, None)
+	
+	if cart:
+		cart = sum(item['quantity'] for item in cart.values())
+		context = {
+			"data":cart
+		}
+		#print(cart)
+		return render(request,'products/index.html',context)
+	else:
+		#print(cart)
+		return render(request,'products/index.html')
+
 
 
 
@@ -62,8 +68,9 @@ def product_list(request):
 	products=Product.objects.order_by('id')[:10]
 	categories=Category.objects.all()
 	min_price=ProductAttribute.objects.aggregate(Min('price'))
-	cart = request.session.get(settings.CART_SESSION_ID)
-	cart = sum(item['quantity'] for item in cart.values())
+	cart = request.session.get(settings.CART_SESSION_ID,None)
+	if cart:
+		cart = sum(item['quantity'] for item in cart.values())
 	return render(request, 'products/product_list.html', {'data':cart,'products':products,'categories':categories,'min_price':min_price})
 
 
@@ -72,6 +79,7 @@ def product_list(request):
 
 
 def product_detail(request, id):
+
 	try:
 		product = get_object_or_404(Product, id=id)
 		
