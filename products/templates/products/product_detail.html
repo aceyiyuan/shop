@@ -2,7 +2,8 @@
 <!--to be done-->
 {{ product.name }}<br/>
 {{ product.category }}</br>
-{% for size in sizes %}
+
+{% for size in sizes.all %}
    
 
    <button type="button" class="btn btn-secondary">{{size.size__name}}</button>

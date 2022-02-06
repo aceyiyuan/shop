@@ -83,8 +83,11 @@ def product_detail(request, id):
 	try:
 		product = get_object_or_404(Product, id=id)
 		
+		#sizes=ProductAttribute.objects.filter(product=product).values('size__id','size__name').distinct()
+		#bases=ProductAttribute.objects.filter(product=product).values('base_id','base__name','price','size__id').distinct()
 		sizes=ProductAttribute.objects.filter(product=product).values('size__id','size__name').distinct()
-		bases=ProductAttribute.objects.filter(product=product).values('base_id','base__name','price','size__id').distinct()
+		bases=ProductAttribute.objects.filter(product=product).values('base_id','base__name').distinct()
+		
 		sauces=ProductAttribute.objects.filter(product=product).values('sauce_id','sauce__name').distinct()
 		category=Category.objects.get(id=id)
 		cart_product_form = CartAddProductForm()
